@@ -3,12 +3,16 @@ package com.omurkrmn.library_management.controller;
 import com.omurkrmn.library_management.dto.request.bookRental.BookRentalRequest;
 import com.omurkrmn.library_management.dto.response.RentalResponse;
 import com.omurkrmn.library_management.service.RentalService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+@Tag(name = "Rental management APIs")
 @RestController
 @RequestMapping("/rentals")
 @Slf4j
@@ -20,6 +24,7 @@ public class RentalController {
         this.rentalService = rentalService;
     }
 
+    @Operation(summary = "Rent a book")
     @PostMapping("/rent")
     public ResponseEntity<RentalResponse> rent(@RequestBody BookRentalRequest bookRentalRequest){
         log.info("Rent request received");

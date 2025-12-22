@@ -52,8 +52,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ErrorResponse(
-                        "Unexpected error occurrred",
-                        300,
+                        "Unexpected error occurred",
+                        500,
                         LocalDateTime.now()
                 ));
     }

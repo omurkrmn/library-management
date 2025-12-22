@@ -6,13 +6,7 @@ spring:
     name: library-management
 
   profiles:
-    active: dev
-
-  security:
-    user:
-      name: dev
-      password: dev1234
-
+    active: admin
 
   datasource:
     url: jdbc:h2:mem:librarydb

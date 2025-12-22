@@ -1,5 +1,6 @@
 package com.omurkrmn.library_management.messasing.consumer;
 
+import com.omurkrmn.library_management.config.RabbitMQConfig;
 import com.omurkrmn.library_management.entity.AuditLog;
 import com.omurkrmn.library_management.messasing.event.LibraryEvent;
 import com.omurkrmn.library_management.repository.AuditLogRepository;
@@ -17,7 +18,7 @@ public class LibraryEventConsumer {
         this.auditLogRepository = auditLogRepository;
     }
 
-    @RabbitListener(queues = "RabbitMQConfig.QUEUE")
+    @RabbitListener(queues = RabbitMQConfig.QUEUE)
     public void consume(LibraryEvent libraryEvent) {
 
         log.info("EVENT RECEIVED -> type: {}, message: {}",

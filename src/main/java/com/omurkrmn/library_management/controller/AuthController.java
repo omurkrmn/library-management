@@ -5,6 +5,7 @@ import com.omurkrmn.library_management.dto.request.user.RegisterRequest;
 import com.omurkrmn.library_management.dto.response.UserResponse;
 import com.omurkrmn.library_management.security.JwtUtil;
 import com.omurkrmn.library_management.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Authentication")
 @RestController
 @RequestMapping("/auth")
 @Slf4j
