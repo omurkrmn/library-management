@@ -3,6 +3,7 @@ package com.omurkrmn.library_management.service;
 import com.omurkrmn.library_management.dto.request.user.LoginRequest;
 import com.omurkrmn.library_management.dto.request.user.RegisterRequest;
 import com.omurkrmn.library_management.dto.response.UserResponse;
+import com.omurkrmn.library_management.entity.Role;
 import com.omurkrmn.library_management.entity.User;
 import com.omurkrmn.library_management.exception.BusinessException;
 import com.omurkrmn.library_management.messasing.event.LibraryEvent;
@@ -41,6 +42,7 @@ public class UserService {
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setRole(Role.ROLE_USER);
 
         User savedUser = userRepository.save(user);
         log.info("User registered {}", savedUser.getUsername());

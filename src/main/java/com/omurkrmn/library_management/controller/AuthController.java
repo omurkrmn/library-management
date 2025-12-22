@@ -39,7 +39,7 @@ public class AuthController {
     public ResponseEntity<String> login(@Valid @RequestBody LoginRequest request) {
 
         UserResponse user = userService.login(request);
-        String token = jwtUtil.generateToken(user.getUsername());
+        String token = jwtUtil.generateToken(user.getUsername(), user.getRole());
 
         log.info("Login request received");
         return ResponseEntity.ok(token);

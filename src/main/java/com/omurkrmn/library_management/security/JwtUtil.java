@@ -1,6 +1,8 @@
 package com.omurkrmn.library_management.security;
 
 import com.omurkrmn.library_management.config.JwtConfig;
+import com.omurkrmn.library_management.entity.Role;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +18,11 @@ public class JwtUtil {
         this.jwtConfig = jwtConfig;
     }
 
-    public String generateToken(String username) {
+    public String generateToken(String username, Role role) {
 
         return Jwts.builder()
                 .subject(username)
+                .claim("roles", role.name())
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + jwtConfig.getExpiration()))
                 .signWith(jwtConfig.getKey())
@@ -34,6 +37,14 @@ public class JwtUtil {
                 .parseSignedClaims(token)
                 .getPayload()
                 .getSubject();
+    }
+
+    public Claims extractClaims(String token) {
+        return Jwts.parser()
+                .verifyWith((SecretKey) jwtConfig.getKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
 }
