@@ -1,5 +1,6 @@
 package com.omurkrmn.library_management.bootstrap;
 
+import com.omurkrmn.library_management.entity.Role;
 import com.omurkrmn.library_management.entity.User;
 import com.omurkrmn.library_management.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class DataInitializer implements CommandLineRunner {
             User user = new User();
             user.setUsername("admin");
             user.setPassword(passwordEncoder.encode("admin1234"));
+            user.setRole(Role.ROLE_ADMIN);
             userRepository.save(user);
 
             log.info("Admin created");
