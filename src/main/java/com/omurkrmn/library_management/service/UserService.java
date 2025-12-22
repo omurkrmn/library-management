@@ -58,7 +58,7 @@ public class UserService {
         return modelMapper.map(savedUser, UserResponse.class);
     }
 
-    public UserResponse login(LoginRequest request) {
+    public User authenticate(LoginRequest request) {
 
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new BusinessException("Username not found"));
@@ -67,7 +67,7 @@ public class UserService {
             throw new BusinessException("Invalid password");
         }
 
-        log.info("Logged in {}", user.getUsername());
+        log.info("User authenticated {}", user.getUsername());
 
         libraryEventProducer.sendMessage(
                 new LibraryEvent(
@@ -77,6 +77,11 @@ public class UserService {
                 )
         );
 
-        return modelMapper.map(user, UserResponse.class);
+        return user;
+    }
+
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(()-> new BusinessException("Username not found"));
     }
 }
