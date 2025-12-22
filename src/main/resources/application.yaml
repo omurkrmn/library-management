@@ -13,9 +13,7 @@ spring:
       name: dev
       password: dev1234
 
-  jwt:
-    secret: my-user-secret-key-my-super-very-very-secret-key
-    expiration: 3600000
+
   datasource:
     url: jdbc:h2:mem:librarydb
     driver-class-name: org.h2.Driver
@@ -37,10 +35,13 @@ spring:
     port: 5672
     username: guest
     password: guest
-  enabled: false
+
 
 logging:
   level:
     org:
       springframework:
         security: DEBUG
+jwt:
+  secret: my-user-secret-key-my-super-very-very-secret-key
+  expiration: 3600000
