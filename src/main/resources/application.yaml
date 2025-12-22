@@ -39,3 +39,5 @@ logging:
 jwt:
   secret: my-user-secret-key-my-super-very-very-secret-key
   expiration: 3600000
+  access-expiration: 900000
+  refresh-expiration: 604800000
