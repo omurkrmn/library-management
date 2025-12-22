@@ -22,6 +22,12 @@ public class JwtConfig {
 
     private long expiration;
 
+    @Value("${jwt.access-expiration}")
+    private long accessExpiration;
+
+    @Value("${jwt.refresh-expiration}")
+    private long refreshExpiration;
+
     public Key getKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
