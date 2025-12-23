@@ -18,7 +18,7 @@ docker compose up --build
 - Java 21
 - Spring Boot
 - Spring Data JPA
-- Spring Security (Basic Auth)
+- Spring Security (Basic Auth) - JWT added!!!
 - RabbitMQ (Event-driven)
 - H2 Database
 - ModelMapper
