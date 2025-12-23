@@ -3,6 +3,15 @@
 ---   
 A mini library management system built with **Java 21 & Spring Boot**, designed for learning real-world backend architecture and showchasing **professional backend** skills.    
 ### CONTENTS
+---    
+#### Operation Instructions
+- This project can bu run without installing any database. H2 used in file mode and RabbitMQ runs via Docker Compose.
+```bash
+git clone repo
+cd repo
+mvn clean package -DskipTests
+docker compose up --build
+```
 ---
 #### Tech Stack
 
@@ -106,11 +115,11 @@ docker run -it --rm \
 ```
 ---
 #### Future Improvements 📌
-- JWT Authentication
-- Role-based aurhorization
-- PostgreSQL
+- JWT Authentication - done
+- Role-based aurhorization -done
+- PostgreSQL - optional(h2-data for demo)
 - Pagination & filtering
-- OpenAPI (Swagger)
+- OpenAPI (Swagger) - done
 - Integration Tests
 ---
 #### Author    
